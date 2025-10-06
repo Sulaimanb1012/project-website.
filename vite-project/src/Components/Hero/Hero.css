@@ -53,3 +53,7 @@ border: 2px solid #0077ff;
 .hero-resume:hover {
 border-color: #0077ff;
 }
+
+.hero-connect a {
+    color: azure;
+}
