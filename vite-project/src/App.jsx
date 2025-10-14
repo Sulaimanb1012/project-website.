@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import Navbar from './Components/Navbar/Navbar'
 import Hero from './Components/Hero/Hero'
 import About from './Components/About/About'
@@ -8,16 +8,22 @@ import Contact from './Components/Contact/Contact'
 import Footer from './Components/Footer/Footer'
 
 const App = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <>
       <Navbar />
       <Hero />
       <About/>
-      <Services/>
-      <ProjectDetail/>
+      {!selectedProject ? (
+        <Services onSelectProject={setSelectedProject} />
+      ) : (
+        <ProjectDetail project={selectedProject} onBack={() => setSelectedProject(null)} />
+      )}
       <Contact/>
       <Footer/>
     </>
   )
 }
+
 export default App

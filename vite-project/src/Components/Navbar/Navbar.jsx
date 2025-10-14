@@ -49,11 +49,6 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          <a className="anchor-link" href="#work">
-            <p onClick={() => setMenu("work")}>Portfolio</p>
-          </a>
-        </li>
-        <li>
           <a className="anchor-link" href="#contact">
             <p onClick={() => setMenu("contact")}>Contact</p>
           </a>

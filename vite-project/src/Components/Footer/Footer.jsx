@@ -14,10 +14,6 @@ const Footer = () => {
           </p>
         </div>
         <div className="footer-top-right">
-          <div className="footer-email-input">
-            <input type="email" placeholder="Voer uw e-mailadres in" />
-          </div>
-          <div className="footer-subscribe">Aanmelden</div>
         </div>
       </div>
       <hr />

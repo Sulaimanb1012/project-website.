@@ -1,26 +1,29 @@
-import React from "react";
 import "./ProjectDetail.css";
-import theme from "../../assets/theme.png";
-import mywork_data from "../../assets/mywork_data";
-import arrow_icon from "../../assets/arrow_icon.svg";
 
-const ProjectDetail = () => {
+
+const ProjectDetail = ({ project, onBack }) => {
+  if (!project) return null;
+
   return (
     <div id="work" className="mywork">
+      <button className="back-button" onClick={onBack}>
+        &larr; Terug naar projecten
+      </button>
+
       <div className="mywork-title">
-        <h1>Mijn nieuwste werk</h1>
-        <img src={theme} alt="" />
+        <h1>{project.s_name}</h1>
       </div>
+
       <div className="mywork-container">
-        {mywork_data.map((work, index) => {
-          return <img key={index} src={work.w_img} alt="" />;
-        })}
+        <img src={project.s_img} alt={project.s_name} />
       </div>
-      <div className="mywork-showmore">
-        <p>Lees Meer</p>
-        <img src={arrow_icon} alt="" />
+
+      <div className="mywork-description">
+        <p>{project.s_desc}</p>
       </div>
     </div>
   );
 };
+
 export default ProjectDetail;
+
