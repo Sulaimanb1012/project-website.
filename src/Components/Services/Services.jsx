@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Services.css";
 import theme from "../../assets/theme.png";
 import Services_Data from "../../assets/services_data";
 import ProjectCard from "../Project/ProjectCard";
 
-const Services = ({ onSelectProject }) => {
+const Services = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredServices = Services_Data.filter((service) =>
@@ -15,7 +17,7 @@ const Services = ({ onSelectProject }) => {
     <div id="services" className="services">
       <div className="services-title">
         <h1>Mijn Projecten</h1>
-        <img src={theme} alt="" />
+        <img src={theme} alt="Thema" />
       </div>
 
       <div className="search-bar">
@@ -28,14 +30,13 @@ const Services = ({ onSelectProject }) => {
       </div>
 
       <div className="services-container">
-        {filteredServices.map((service, index) => (
+        {filteredServices.map((service) => (
           <ProjectCard
             key={service.s_no}
-            index={index}
-            s_desc={service.s_desc}
-            s_name={service.s_name}
             s_no={service.s_no}
-            onReadMore={() => onSelectProject(service)}
+            s_name={service.s_name}
+            s_desc={service.s_desc}
+            onReadMore={() => navigate(`/project/${service.s_no}`)}
           />
         ))}
       </div>

@@ -1,11 +1,18 @@
+import { useParams, useNavigate } from "react-router-dom";
+import Services_Data from "../../assets/services_data";
 import "./ProjectDetail.css";
 
-const ProjectDetail = ({ project, onBack }) => {
-  if (!project) return null;
+const ProjectDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const project = Services_Data.find(p => p.s_no.toString() === id);
+
+  if (!project) return <p>Project niet gevonden.</p>;
 
   return (
     <div id="work" className="mywork">
-      <button className="back-button" onClick={onBack}>
+      <button className="back-button" onClick={() => navigate("/")}>
         &larr; Terug naar projecten
       </button>
 
