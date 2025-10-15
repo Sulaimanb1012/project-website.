@@ -7,11 +7,10 @@ const ProjectDetail = () => {
   const navigate = useNavigate();
 
   const project = Services_Data.find(p => p.s_no.toString() === id);
-
   if (!project) return <p>Project niet gevonden.</p>;
 
   return (
-    <div id="work" className="mywork">
+    <div className="mywork">
       <button className="back-button" onClick={() => navigate("/")}>
         &larr; Terug naar projecten
       </button>
@@ -32,3 +31,4 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
+
