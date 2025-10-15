@@ -15,19 +15,27 @@ const Contact = () => {
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    }).then((res) => res.json());
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      }).then((res) => res.json());
 
-    if (res.success) {
-      console.log("Success", res);
+      if (res.success) {
+        alert("Bericht succesvol verzonden!"); // Melding
+        event.target.reset(); // Formulier resetten
+      } else {
+        alert("Er is iets misgegaan, probeer het opnieuw.");
+      }
+    } catch (error) {
+      alert("Er is een fout opgetreden: " + error.message);
     }
   };
+
   return (
     <div id="contact" className="contact">
       <div className="contact-title">
@@ -54,15 +62,15 @@ const Contact = () => {
           </div>
         </div>
         <form onSubmit={onSubmit} className="contact-right">
-          <label htmlFor="">Naam</label>
+          <label>Naam</label>
           <input type="text" placeholder="Voer uw naam in" name="name" />
-          <label htmlFor="">Email</label>
+          <label>Email</label>
           <input
             type="email"
             placeholder="Voer uw e-mailadres in"
             name="email"
           />
-          <label htmlFor="">Bericht</label>
+          <label>Bericht</label>
           <textarea
             name="message"
             rows="8"
@@ -76,4 +84,5 @@ const Contact = () => {
     </div>
   );
 };
+
 export default Contact;
