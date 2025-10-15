@@ -1,6 +1,7 @@
 import arrow from "../../assets/arrow_icon.svg";
 import "./ProjectCard.css"; 
 
+
 const ProjectCard = ({ s_no, s_name, s_desc, onReadMore }) => {
   return (
     <div className="services-format">
