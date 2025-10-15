@@ -7,7 +7,6 @@ import ProjectCard from "../Project/ProjectCard";
 const Services = ({ onSelectProject }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter de projecten op naam
   const filteredServices = Services_Data.filter((service) =>
     service.s_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -19,7 +18,6 @@ const Services = ({ onSelectProject }) => {
         <img src={theme} alt="" />
       </div>
 
-      {/* Zoekveld */}
       <div className="search-bar">
         <input
           type="text"

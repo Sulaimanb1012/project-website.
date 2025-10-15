@@ -1,6 +1,5 @@
 import "./ProjectDetail.css";
 
-
 const ProjectDetail = ({ project, onBack }) => {
   if (!project) return null;
 
@@ -26,4 +25,3 @@ const ProjectDetail = ({ project, onBack }) => {
 };
 
 export default ProjectDetail;
-
