@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Services.css";
-import theme from "../../assets/theme.png";
 import Services_Data from "../../assets/services_data";
 import ProjectCard from "../Project/ProjectCard";
 
@@ -17,7 +16,6 @@ const Services = () => {
     <div id="services" className="services">
       <div className="services-title">
         <h1>Mijn Projecten</h1>
-        <img src={theme} alt="Thema" />
       </div>
 
       <div className="search-bar">

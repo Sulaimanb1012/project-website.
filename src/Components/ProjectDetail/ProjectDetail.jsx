@@ -11,6 +11,7 @@ const ProjectDetail = () => {
 
   return (
     <div className="mywork">
+      {/* Terug naar Services-lijst */}
       <button className="back-button" onClick={() => navigate("/")}>
         &larr; Terug naar projecten
       </button>
