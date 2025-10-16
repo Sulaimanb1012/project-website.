@@ -40,12 +40,12 @@ const Navbar = () => {
         </li>
         <li>
           <a className="anchor-link" href="#about">
-            <p onClick={() => setMenu("about")}>About Me</p>
+            <p onClick={() => setMenu("about")}>Over Mij</p>
           </a>
         </li>
         <li>
           <a className="anchor-link" href="#services">
-            <p onClick={() => setMenu("services")}>Services</p>
+            <p onClick={() => setMenu("services")}>Mijn Projecten</p>
           </a>
         </li>
         <li>
