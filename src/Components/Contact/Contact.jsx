@@ -6,45 +6,16 @@ import location_icon from "../../assets/location_icon.svg";
 import call_icon from "../../assets/call_icon.svg";
 
 const Contact = () => {
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-
-    formData.append("access_key", "d48373b1-104d-4e1d-b93d-00e25deb41f7");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
-      }).then((res) => res.json());
-
-      if (res.success) {
-        alert("Bericht succesvol verzonden!"); // Melding
-        event.target.reset(); // Formulier resetten
-      } else {
-        alert("Er is iets misgegaan, probeer het opnieuw.");
-      }
-    } catch (error) {
-      alert("Er is een fout opgetreden: " + error.message);
-    }
-  };
-
   return (
     <div id="contact" className="contact">
       <div className="contact-title">
         <h1>Neem contact op</h1>
         <img src={theme} alt="" />
       </div>
+
       <div className="contact-section">
         <div className="contact-left">
-          <h1>Lets Talk</h1>
+          <h1>Let's Talk</h1>
           <p>
             Ik ben bezig met mijn opleiding en werk graag aan leuke projecten.
             Heb je iets waar ik aan mee kan doen? Laat het me weten!
@@ -61,21 +32,38 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <form onSubmit={onSubmit} className="contact-right">
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          className="contact-right"
+          onSubmit={() => alert("Bericht succesvol verzonden!")}
+        >
+          {/* Web3Forms key */}
+          <input
+            type="hidden"
+            name="access_key"
+            value="d48373b1-104d-4e1d-b93d-00e25deb41f7"
+          />
+
           <label>Naam</label>
-          <input type="text" placeholder="Voer uw naam in" name="name" />
+          <input type="text" name="name" placeholder="Voer uw naam in" required />
+
           <label>Email</label>
           <input
             type="email"
-            placeholder="Voer uw e-mailadres in"
             name="email"
+            placeholder="Voer uw e-mailadres in"
+            required
           />
+
           <label>Bericht</label>
           <textarea
             name="message"
             rows="8"
             placeholder="Voer uw bericht in"
+            required
           ></textarea>
+
           <button type="submit" className="contact-submit">
             Verzenden
           </button>
